@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "parser"
+version = "0.1.0"
+description = ""
+authors = ["neojelll <timofejmitusin60892@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+httpx = "^0.28.1"
+loguru = "^0.7.3"
+beautifulsoup4 = "^4.12.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest-asyncio = "^0.25.0"
+pytest-cov = "^6.0.0"
+pytest = "^8.3.4"
+ruff = "^0.8.4"
+
+[tool.poetry.scripts]
+run-parser = "parser.main:run"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
+addopts = "-v --cov=parser --cov-report term-missing"
+
+[tool.coverage.run]
+omit = [
+    "parser/main.py",
+    "parser/logger.py",
+    ]
+
+[tool.ruff]
+target-version = "py312"
+indent-width = 4
+fix = true
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "single"
+
+[lint]
+ignore = ["E501"]
